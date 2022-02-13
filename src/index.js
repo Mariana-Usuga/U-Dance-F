@@ -1,14 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import { Auth0Provider } from '@auth0/auth0-react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
+import LandingPage from './pages/LandingPage';
+import Layout from './components/Layout';
+import DetailTeacher from './pages/DetailTeacher';
+import store from './store/index';
+
+const Routing = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="teacherDetail/:id" element={<DetailTeacher />} />
+      </Route>
+      {/* <Route path="marketDetail/:id" element={<MarketDetail />} /> */}
+      {/* </Route> */}
+      {/* <Route path="/register" element={<Register />} /> */}
+    </Routes>
+  </BrowserRouter>
+);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Auth0Provider
+      domain="dev-aj9iwtvo.us.auth0.com"
+      clientId="seEglm3LgcJQTuKiolyjA574WeH8JHKE"
+      redirectUri={window.location.origin}
+    >
+      <Provider store={store}>
+        <Routing />
+      </Provider>
+    </Auth0Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
