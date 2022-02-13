@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -16,16 +17,22 @@ const DetailTeacher = () => {
   }, []);
 
   return (
-    <div className="flex flex-wrap text-center justify-evenly m-10 font-serif font-bold">
-      <div>
-        <img className="chat-notification-logo" src={course?.image} alt="ChitChat Logo" />
+    <div className="h-screen bg-no-repeat bg-cover
+    bg-[url('https://res.cloudinary.com/db3njhxi0/image/upload/v1644781249/U-Dance/Singapore_City_at_Night_hbk8kk.jpg')]"
+    >
+      <div className="bg-gradient-to-l from-white pt-10 mr-8 ml-8 h-full top-2 flex flex-wrap text-center justify-evenly font-serif font-bold">
+        <div className="w-1/2">
+          <img className="h-3/4 ml-auto mr-auto" src={course?.image} alt="ChitChat Logo" />
+        </div>
+        <div className="w-2/4 pr-8 pl-8">
+          <h4 className="text-2xl">{course?.title.toUpperCase()}</h4>
+          <p className="text-2xl">{course?.teacher.toUpperCase()}</p>
+          <p className="pt-6">{course?.description.toUpperCase()}</p>
+          <p className="pt-4">{course?.place.toUpperCase()}</p>
+          <button type="button">TOMAR curso</button>
+        </div>
       </div>
-      <div className="w-2/4">
-        <h4>APRENDE SALSA</h4>
-        <span>{course?.teacher}</span>
-        <p>{course?.description}</p>
-        <span>{course?.place}</span>
-      </div>
+
     </div>
   );
 };

@@ -1,13 +1,23 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaBars } from 'react-icons/fa';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const { loginWithRedirect, user } = useAuth0();
+  console.log('user', user);
   const toggleOpen = () => {
     setShowMenu(!showMenu);
   };
+
+  useEffect(() => {
+    if (user) {
+
+    }
+  }, [user]);
   return (
     <nav>
       <ul className="flex bg-black h-32 text-white">
@@ -24,7 +34,12 @@ const NavBar = () => {
         <ul className="text-center absolute right-0 w-96">
           <li className="p-5 bg-black text-white font-serif">Home</li>
           <li className="p-5 bg-black text-white font-mono">Course</li>
-          <li className="p-5 bg-black text-white">Log in</li>
+          <li className="p-5 bg-black text-white">
+            <button onClick={loginWithRedirect}>
+              Log in
+            </button>
+
+          </li>
           <li className="p-5 bg-black text-white">Sign up</li>
         </ul>
         )}
