@@ -9,11 +9,3 @@ export const fetchCourses = () => async (dispatch) => {
     payload: courses.data,
   });
 };
-
-// export const fetchCourse = (id) => async (dispatch) => {
-//   const course = await getCourse(id);
-//   dispatch({
-//     type: GET_COURSE,
-//     payload: course.data,
-//   });
-// };

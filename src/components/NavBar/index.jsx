@@ -4,18 +4,25 @@
 import { useEffect, useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useDispatch } from 'react-redux';
+import { fetchSignUp } from '../../store/actions/userActions';
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const { loginWithRedirect, user } = useAuth0();
-  console.log('user', user);
   const toggleOpen = () => {
     setShowMenu(!showMenu);
   };
 
   useEffect(() => {
     if (user) {
-
+      const newUser = {
+        name: user.name,
+        email: user.email,
+        image: user.picture,
+      };
+      dispatch(fetchSignUp(newUser));
     }
   }, [user]);
   return (

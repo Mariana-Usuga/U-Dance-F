@@ -9,6 +9,7 @@ import LandingPage from './pages/LandingPage';
 import Layout from './components/Layout';
 import DetailTeacher from './pages/DetailTeacher';
 // import LoginButton from './components/LoginButton/LoginButton';
+import CheckYourEmail from './pages/CheckYourEmail';
 import App from './App';
 import store from './store/index';
 
@@ -18,11 +19,9 @@ const Routing = () => (
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<LandingPage />} />
         <Route path="teacherDetail/:id" element={<DetailTeacher />} />
+        <Route path="active" element={<CheckYourEmail />} />
         <Route path="login" element={<App />} />
       </Route>
-      {/* <Route path="marketDetail/:id" element={<MarketDetail />} /> */}
-      {/* </Route> */}
-      {/* <Route path="/register" element={<Register />} /> */}
     </Routes>
   </BrowserRouter>
 );
@@ -32,6 +31,7 @@ ReactDOM.render(
     <Auth0Provider
       domain="dev-aj9iwtvo.us.auth0.com"
       clientId="seEglm3LgcJQTuKiolyjA574WeH8JHKE"
+      // redirectUri={<CheckYourEmail />}
       redirectUri={window.location.origin}
     >
       <Provider store={store}>
