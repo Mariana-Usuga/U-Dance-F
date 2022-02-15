@@ -25,6 +25,7 @@ const NavBar = () => {
       dispatch(fetchSignUp(newUser));
     }
   }, [user]);
+
   return (
     <nav>
       <ul className="flex bg-black h-32 text-white">

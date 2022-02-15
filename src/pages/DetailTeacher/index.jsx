@@ -29,7 +29,7 @@ const DetailTeacher = () => {
           <p className="text-2xl">{course?.teacher.toUpperCase()}</p>
           <p className="pt-6">{course?.description.toUpperCase()}</p>
           <p className="pt-4">{course?.place.toUpperCase()}</p>
-          <button type="button">TOMAR curso</button>
+          <button className="mt-4 bg-purple-400 hover:bg-purple-600 w-64 h-10 rounded-2xl font-bold" type="button">TOMAR CURSO</button>
         </div>
       </div>
 
