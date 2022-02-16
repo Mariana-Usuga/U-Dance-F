@@ -9,7 +9,8 @@ import LandingPage from './pages/LandingPage';
 import Layout from './components/Layout';
 import DetailTeacher from './pages/DetailTeacher';
 // import LoginButton from './components/LoginButton/LoginButton';
-import App from './App';
+// import App from './App';
+import Pay from './pages/Pay';
 import store from './store/index';
 
 const Routing = () => (
@@ -18,7 +19,7 @@ const Routing = () => (
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<LandingPage />} />
         <Route path="teacherDetail/:id" element={<DetailTeacher />} />
-        <Route path="login" element={<App />} />
+        <Route path="pay" element={<Pay />} />
       </Route>
     </Routes>
   </BrowserRouter>

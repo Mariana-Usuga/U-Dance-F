@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-underscore-dangle */
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getCourse } from '../../store/service/courseService';
 
 const DetailTeacher = () => {
@@ -29,7 +29,17 @@ const DetailTeacher = () => {
           <p className="text-2xl">{course?.teacher.toUpperCase()}</p>
           <p className="pt-6">{course?.description.toUpperCase()}</p>
           <p className="pt-4">{course?.place.toUpperCase()}</p>
-          <button className="mt-4 bg-purple-400 hover:bg-purple-600 w-64 h-10 rounded-2xl font-bold" type="button">TOMAR CURSO</button>
+          <button
+            className="mt-4 bg-purple-400 hover:bg-purple-600 w-64 h-10 rounded-2xl font-bold"
+            type="button"
+          >
+            <Link
+              to="/pay"
+              style={{ textDecoration: 'none' }}
+            >
+              TOMAR CURSO
+            </Link>
+          </button>
         </div>
       </div>
 

@@ -1,30 +1,30 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useDispatch } from 'react-redux';
-import { fetchSignUp } from '../../store/actions/userActions';
+// import { useDispatch } from 'react-redux';
+// import { fetchSignUp } from '../../store/actions/userActions';
 
 const NavBar = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const { loginWithRedirect, user } = useAuth0();
+  const { loginWithRedirect } = useAuth0();
   const toggleOpen = () => {
     setShowMenu(!showMenu);
   };
 
-  useEffect(() => {
-    if (user) {
-      const newUser = {
-        name: user.name,
-        email: user.email,
-        image: user.picture,
-      };
-      dispatch(fetchSignUp(newUser));
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user) {
+  //     const newUser = {
+  //       name: user.name,
+  //       email: user.email,
+  //       image: user.picture,
+  //     };
+  //     dispatch(fetchSignUp(newUser));
+  //   }
+  // }, [user]);
 
   return (
     <nav>
