@@ -11,16 +11,39 @@ import DetailTeacher from './pages/DetailTeacher';
 // import LoginButton from './components/LoginButton/LoginButton';
 // import App from './App';
 import Pay from './pages/Pay';
+import ChooseRole from './pages/ChooseRole';
+import CourseList from './pages/CourseList';
+// import VerticalMenu from './components/VerticalMenu';
+import Profile from './components/Profile';
+import Layout2 from './components/Layout2';
+import CreateCourse from './pages/CreateCourse';
 import store from './store/index';
 
 const Routing = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="/" element={<LandingPage />} />
+      <Route path="/" element={<ChooseRole />} />
+
+      <Route path="pages" element={<Layout />}>
+        <Route path="main" element={<LandingPage />} />
         <Route path="teacherDetail/:id" element={<DetailTeacher />} />
         <Route path="pay" element={<Pay />} />
+        <Route path="director" element={<Layout2 />}>
+          <Route path="courseList" element={<CourseList />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
+        <Route path="createCourse" element={<CreateCourse />} />
       </Route>
+
+      <Route
+        path="*"
+        element={(
+          <main style={{ padding: '1rem' }}>
+            <p>No hay nada aqui</p>
+          </main>
+      )}
+      />
+
     </Routes>
   </BrowserRouter>
 );

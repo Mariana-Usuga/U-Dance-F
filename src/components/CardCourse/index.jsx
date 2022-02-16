@@ -3,15 +3,7 @@
 /* eslint-disable no-lone-blocks */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import PropTypes from 'prop-types';
-// w-full
-// md:max-w-2xl
-// max-w-md mx-auto
-// const s = `background-image:
-// url('https://images.unsplash.com/photo-1623479322729-28b25c16b011?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80');`;
-// {`${`h-screen bg-no-repeat bg-cover
-//           bg-[url('https://images.unsplash.com/photo-1623479322729-28b25c16b011?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80')]
-//          relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden
-//          shadow-lg hover:shadow-2xl  transition duration-300 ease-in-out`}`}
+
 const CardCourse = ({ course }) => (
   <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mb-12">
     <article>

@@ -17,7 +17,7 @@ const DetailTeacher = () => {
   }, []);
 
   return (
-    <div className="h-screen bg-no-repeat bg-cover
+    <div className="h-screen bg-no-repeat bg-cover bg-opacity-25
     bg-[url('https://res.cloudinary.com/db3njhxi0/image/upload/v1644781249/U-Dance/Singapore_City_at_Night_hbk8kk.jpg')]"
     >
       <div className="bg-gradient-to-l from-white pt-10 mr-8 ml-8 h-full top-2 flex flex-wrap text-center justify-evenly font-serif font-bold">
