@@ -27,12 +27,12 @@ const Routing = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<ChooseRole />} />
+      <Route path="/search" element={<Search />} />
 
       <Route path="pages" element={<Layout />}>
         <Route path="main" element={<LandingPage />} />
         <Route path="teacherDetail/:id" element={<DetailTeacher />} />
         <Route path="pay" element={<Pay />} />
-        <Route path="search" element={<Search />} />
         <Route path="director" element={<Layout2 />}>
           <Route path="courseList" element={<CourseList />} />
           <Route path="profile" element={<Profile />} />

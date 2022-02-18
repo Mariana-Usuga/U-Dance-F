@@ -13,11 +13,6 @@ const NavBar = () => {
   // const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const { loginWithRedirect } = useAuth0();
-  console.log('show', showMenu);
-  // const toggleOpe = () => {
-  //   console.log('entra en toggleOpen');
-  //   setShowMenu(!showMenu);
-  // };
 
   // useEffect(() => {
   //   if (user) {
@@ -29,18 +24,19 @@ const NavBar = () => {
   //     dispatch(fetchSignUp(newUser));
   //   }
   // }, [user]);
+  //
 
   return (
     <nav>
       <ul className="flex bg-black h-32 text-white">
-        <li className="flex-1 text-3xl pt-4 pl-4 font-sans">
+        <li className="flex-1 mt-2 ml-60">
           <img className="w-24 ml-auto mr-auto" src="https://res.cloudinary.com/db3njhxi0/image/upload/v1645150905/U-Dance/images_kszsmu.png" alt="" />
         </li>
-        <li className="mr-5">
+        <li className="">
           <Dropdown />
         </li>
         <li
-          className="text-3xl pt-5 pr-4 "
+          className="text-4xl mt-8 mr-8 text-white"
           onClick={() => setShowMenu(!showMenu)}
         >
           {showMenu ? <FaTimes /> : <FaBars />}
@@ -48,7 +44,7 @@ const NavBar = () => {
       </ul>
       {showMenu
         && (
-        <ul className="text-center absolute right-0 w-2/3">
+        <ul className="text-center absolute right-0 w-2/3 z-10">
           <li className="p-5 bg-black text-white font-serif">Home</li>
           <li className="p-5 bg-black text-white font-serif">Course</li>
           <li className="p-5 bg-black text-white font-serif">

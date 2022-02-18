@@ -10,13 +10,13 @@ const Dropdown = () => {
     setShowDropdown(!showDropdown);
   };
   return (
-    <div className=" font-sans py-16 mr-20">
+    <div className=" font-sans py-10 mr-20">
       <div className="relative">
         <button
           type="button"
-          className="flex"
+          className="flex "
         >
-          <span className=" text-white text-xl">
+          <span className=" text-white text-2xl">
             Courses
           </span>
           <span className="text-white mt-2" onClick={toggleOpen}>
@@ -26,10 +26,29 @@ const Dropdown = () => {
         </button>
         {showDropdown
         && (
-          <ul>
-            <li>Salsa</li>
-            <li>Bachata</li>
-            <li>Kisomba</li>
+          <ul className="text-center z-10">
+            <li
+              className="p-5 bg-black text-white font-serif z-10"
+              onClick={search}
+              value="salsa"
+            >
+              Salsa
+            </li>
+            <li
+              className="p-5 bg-black text-white font-serif z-10"
+              onClick={search}
+              value="bachata"
+            >
+              Bachata
+            </li>
+            <li
+              className="p-5 bg-black text-white font-serif z-10"
+              onClick={search}
+              value="kizomba"
+            >
+              Kizomba
+
+            </li>
           </ul>
         )}
       </div>

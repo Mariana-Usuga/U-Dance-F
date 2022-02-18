@@ -55,7 +55,7 @@ const LandingPage = () => {
         <div className="flex flex-wrap justify-around">
           {courses.map((course) => (
             <Link
-              to={`/teacherDetail/${course._id}`}
+              to={`/pages/teacherDetail/${course._id}`}
               key={course._id}
               style={{ textDecoration: 'none' }}
             >
