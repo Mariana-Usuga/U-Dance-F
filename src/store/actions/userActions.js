@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { LOGIN_SUCCESSFUL } from '../types/userTypes';
+import { LOGIN_SUCCESSFUL, ROLE } from '../types/userTypes';
 import { postSignUp } from '../service/userService';
 
 export const fetchSignUp = (user) => async (dispatch) => {
@@ -7,6 +7,14 @@ export const fetchSignUp = (user) => async (dispatch) => {
   dispatch({
     type: LOGIN_SUCCESSFUL,
     payload: userRes.data,
+  });
+};
+
+export const fetchRole = (role) => async (dispatch) => {
+  console.log('entra en fetchRole', role);
+  dispatch({
+    type: ROLE,
+    payload: role,
   });
 };
 

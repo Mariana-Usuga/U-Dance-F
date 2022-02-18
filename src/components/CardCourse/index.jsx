@@ -1,57 +1,24 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable no-script-url */
+/* eslint-disable react/jsx-no-script-url */
 /* eslint-disable react/style-prop-object */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-lone-blocks */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import PropTypes from 'prop-types';
-
+// max-w-sm rounded material-card bg-blue-600
+// w-full rounded-t  in img
 const CardCourse = ({ course }) => (
-  <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mb-12">
-    <article>
-      <h2 className="text-2xl font-extrabold text-gray-900">BLOG</h2>
-      <section className="mt-6 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-8">
-        <article>
-          <div className="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out" />
-          <div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
-            <h3 className="text-center">
-              <a className="text-white text-2xl font-bold text-center" href="#">
-                <span className="absolute inset-0" />
-                {course.title}
-                {/* <img src={course.image} alt="" /> */}
-              </a>
-            </h3>
-          </div>
-        </article>
-        <article
-          className="relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl  transition duration-300 ease-in-out"
-          // style="background-image: url('https://images.unsplash.com/photo-1569012871812-f38ee64cd54c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');"
-        >
-          <div className="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out" />
-          <div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
-            <h3 className="text-center">
-              <a className="text-white text-2xl font-bold text-center" href="#">
-                <span className="absolute inset-0" />
-                Python Frameworks
-              </a>
-            </h3>
-          </div>
-        </article>
-        <article
-          className="relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl  transition duration-300 ease-in-out"
-          // style="background-image: url('https://images.unsplash.com/photo-1511376777868-611b54f68947?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80');"
-        >
-          <div className="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out" />
-          <div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
-            <h3 className="text-center">
-              <a className="text-white text-2xl font-bold text-center" href="#">
-                <span className="absolute inset-0" />
-                The best plugins for Visual Studio Code
-              </a>
-            </h3>
-          </div>
-        </article>
-      </section>
-    </article>
-  </section>
+  <div className="w-96">
+    <img
+      className="rounded-t"
+      src={course.image}
+    />
+    <div className="px-6 py-4">
+      <div className="font-bold text-xl font-serif text-white">{course.title}</div>
+    </div>
+  </div>
 );
 
 CardCourse.propTypes = {

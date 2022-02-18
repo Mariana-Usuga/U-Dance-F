@@ -1,3 +1,4 @@
 export const LOGIN_SUCCESSFUL = 'LOGIN_SUCCESSFUL';
 export const LOGIN_FAILURE = 'LOGIN_SUCCESSFUL';
 export const SIGN_UP_SUCCESSFUL = 'SIGN_UP_SUCCESSFUL';
+export const ROLE = 'ROLE';

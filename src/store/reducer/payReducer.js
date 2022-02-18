@@ -1,5 +1,5 @@
 /* eslint-disable default-param-last */
-import { PAY_SUCCESSFUL } from '../types/userTypes';
+import { PAY_SUCCESSFUL } from '../types/payType';
 
 const initialState = {
   pay: {},

@@ -1,7 +1,16 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-// mx-auto px-4 py-8 max-w-xl my-20
+import { useDispatch } from 'react-redux';
+import { fetchRole } from '../../store/actions/userActions';
+
 const ChooseRole = () => {
-  console.log('work');
+  const dispatch = useDispatch();
+
+  const chooseRole = (e) => {
+    console.log('value', e.target.value);
+    dispatch(fetchRole(e.target.value));
+  };
   return (
     <div className="">
       <h2 className=" font-serif font-bold text-center text-4xl pt-14">ESCOJE TU ROL</h2>
@@ -15,10 +24,16 @@ const ChooseRole = () => {
                 className="w-full h-64 rounded-lg rounded-b-none"
               />
             </div>
-            <div className="px-4 py-2 font-serif text-center
+            <div
+              className="px-4 py-2 font-serif text-center
           bg-purple-400 hover:bg-purple-600 w-64 h-10 rounded-2xl"
+              onClick={chooseRole}
             >
-              <button type="button" className="font-bold">
+              <button
+                type="button"
+                className="font-bold"
+                value="alumno"
+              >
                 ALUMNO
               </button>
             </div>
@@ -35,10 +50,16 @@ const ChooseRole = () => {
                 className="w-full h-64 rounded-lg rounded-b-none"
               />
             </div>
-            <div className="px-4 py-2 mt-2mt-4 font-serif text-center
-           bg-purple-400 hover:bg-purple-600 w-64 h-10 rounded-2xl "
+            <div
+              className="px-4 py-2 mt-2mt-4 font-serif text-center
+           bg-purple-400 hover:bg-purple-600 w-64 h-10 rounded-2xl"
+              onClick={chooseRole}
             >
-              <button type="button" className="font-bold">
+              <button
+                type="button"
+                className="font-bold"
+                value="director"
+              >
                 DIRECTOR
               </button>
             </div>

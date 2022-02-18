@@ -4,6 +4,7 @@ import './index.css';
 import { Auth0Provider } from '@auth0/auth0-react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import reportWebVitals from './reportWebVitals';
 import LandingPage from './pages/LandingPage';
 import Layout from './components/Layout';
@@ -17,7 +18,9 @@ import CourseList from './pages/CourseList';
 import Profile from './components/Profile';
 import Layout2 from './components/Layout2';
 import CreateCourse from './pages/CreateCourse';
-import store from './store/index';
+import configureStore from './store/index';
+
+const { store, persistor } = configureStore();
 
 const Routing = () => (
   <BrowserRouter>
@@ -53,11 +56,12 @@ ReactDOM.render(
     <Auth0Provider
       domain="dev-aj9iwtvo.us.auth0.com"
       clientId="seEglm3LgcJQTuKiolyjA574WeH8JHKE"
-      // redirectUri={<CheckYourEmail />}
       redirectUri={window.location.origin}
     >
       <Provider store={store}>
-        <Routing />
+        <PersistGate loading={null} persistor={persistor}>
+          <Routing />
+        </PersistGate>
       </Provider>
     </Auth0Provider>
   </React.StrictMode>,
