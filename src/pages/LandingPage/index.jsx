@@ -1,7 +1,3 @@
-/* eslint-disable quotes */
-/* eslint-disable prefer-template */
-/* eslint-disable react/style-prop-object */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-underscore-dangle */
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -33,17 +29,26 @@ const LandingPage = () => {
              items-center"
             >
               <h3 className="text-center">
-                <a className="text-white text-2xl font-serif font-bold text-center" href="#">
+                <div
+                  className="text-white text-2xl font-playball tracking-widest text-center"
+                  href="#"
+                >
                   <span className="absolute inset-0" />
-                  Top 10 highest paid programming languages of 2021
-                </a>
+                  U DANCE
+                  {/* <p className="w-1/3 ml-auto mr-auto">
+                    When we dance, our bodies release endorphins to relieve pain.
+                    These endorphins are the best medicine for depression, anxiety and stress.
+                  </p> */}
+                </div>
               </h3>
             </div>
           </div>
         </div>
         {/* </article> */}
       </div>
-      <div className="bg-black text-white text-center py-20 text-3xl font-cursive">
+      <div className="bg-black text-white text-center py-20 text-4xl font-light
+      font-playball"
+      >
         Dance is the hidden language of the soul...
       </div>
       <div className="bg-black">

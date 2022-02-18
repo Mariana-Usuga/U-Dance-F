@@ -16,6 +16,7 @@ import ChooseRole from './pages/ChooseRole';
 import CourseList from './pages/CourseList';
 // import VerticalMenu from './components/VerticalMenu';
 import Profile from './components/Profile';
+import Search from './pages/Search';
 import Layout2 from './components/Layout2';
 import CreateCourse from './pages/CreateCourse';
 import configureStore from './store/index';
@@ -31,6 +32,7 @@ const Routing = () => (
         <Route path="main" element={<LandingPage />} />
         <Route path="teacherDetail/:id" element={<DetailTeacher />} />
         <Route path="pay" element={<Pay />} />
+        <Route path="search" element={<Search />} />
         <Route path="director" element={<Layout2 />}>
           <Route path="courseList" element={<CourseList />} />
           <Route path="profile" element={<Profile />} />

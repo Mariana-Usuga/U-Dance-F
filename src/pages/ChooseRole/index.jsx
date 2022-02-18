@@ -8,7 +8,6 @@ const ChooseRole = () => {
   const dispatch = useDispatch();
 
   const chooseRole = (e) => {
-    console.log('value', e.target.value);
     dispatch(fetchRole(e.target.value));
   };
   return (

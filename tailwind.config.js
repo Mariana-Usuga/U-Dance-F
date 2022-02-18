@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultThem');
+// const defaultTheme = require('tailwindcss/defaultThem');
 
 module.exports = {
   content: [
@@ -21,7 +21,9 @@ module.exports = {
       sans: ['Lemonada', 'Arial', 'Comfortaa'],
       serif: ['Comfortaa'],
       mono: ['Comfortaa'],
-      playball: ['Playball', ...defaultTheme.fontFamily.display],
+      playball: "'Playball', 'display'",
+      poppins: "'Poppins', 'sans-serif'",
+      montserrat: "'Montserrat', 'sans-serif'",
     },
   },
   variants: {
