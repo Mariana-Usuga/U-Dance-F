@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import VerticalMenu from '../VerticalMenu';
+// import Footer from '../Footer';
 
 const Layout2 = () => {
   console.log('workin');
@@ -7,7 +8,6 @@ const Layout2 = () => {
     <div className="flex justify-center">
       <VerticalMenu />
       <Outlet />
-      {/* <Footer /> */}
     </div>
   );
 };

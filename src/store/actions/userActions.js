@@ -11,7 +11,6 @@ export const fetchSignUp = (user) => async (dispatch) => {
 };
 
 export const fetchRole = (role) => async (dispatch) => {
-  console.log('entra en fetchRole', role);
   dispatch({
     type: ROLE,
     payload: role,

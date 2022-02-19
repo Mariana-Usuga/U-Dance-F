@@ -2,17 +2,20 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useDispatch } from 'react-redux';
+import { useAuth0 } from '@auth0/auth0-react';
 import { fetchRole } from '../../store/actions/userActions';
 
 const ChooseRole = () => {
   const dispatch = useDispatch();
+  const { loginWithRedirect } = useAuth0();
 
   const chooseRole = (e) => {
     dispatch(fetchRole(e.target.value));
   };
+
   return (
-    <div className="">
-      <h2 className=" font-serif font-bold text-center text-4xl pt-14">ESCOJE TU ROL</h2>
+    <div className="bg-gray-100 h-screen">
+      <h2 className=" font-serif font-bold text-center text-4xl pt-14">ARE YOU?</h2>
       <div className="flex flex-wrap justify-center pt-14">
         <div className="drop-shadow-2xl">
           <div className=" bg-white shadow-2xl rounded-lg mb-6 tracking-wide mr-10">
@@ -32,8 +35,11 @@ const ChooseRole = () => {
                 type="button"
                 className="font-bold"
                 value="alumno"
+                onClick={() => loginWithRedirect({
+                  screen_hint: '/pages/main',
+                })}
               >
-                ALUMNO
+                STUDENT
               </button>
             </div>
           </div>
@@ -52,12 +58,14 @@ const ChooseRole = () => {
             <div
               className="px-4 py-2 mt-2mt-4 font-serif text-center
            bg-purple-400 hover:bg-purple-600 w-64 h-10 rounded-2xl"
-              onClick={chooseRole}
+              // onClick={chooseRole}
+              onClick={loginWithRedirect}
             >
               <button
                 type="button"
                 className="font-bold"
                 value="director"
+                // onClick={loginWithRedirect}
               >
                 DIRECTOR
               </button>

@@ -7,3 +7,5 @@ const URL_BASE = 'http://localhost:8080';
 export const getCourses = async () => axios.get(`${URL_BASE}/api/course`);
 
 export const getCourse = (id) => axios.get(`${URL_BASE}/api/course/${id}`);
+
+export const getSearchByRhythm = async (rhythm) => axios.get(`${URL_BASE}/api/course/${rhythm}`);

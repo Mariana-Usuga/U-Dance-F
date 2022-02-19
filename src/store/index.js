@@ -19,7 +19,6 @@ const storeCombined = combineReducers({
 });
 
 const persistedReducer = persistReducer(persistConfig, storeCombined);
-
 const configureStore = () => {
   const store = createStore(
     persistedReducer,
