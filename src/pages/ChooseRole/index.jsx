@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
+// import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
 import { fetchRole } from '../../store/actions/userActions';
@@ -34,10 +35,7 @@ const ChooseRole = () => {
               <button
                 type="button"
                 className="font-bold"
-                value="alumno"
-                onClick={() => loginWithRedirect({
-                  screen_hint: '/pages/main',
-                })}
+                value="student"
               >
                 STUDENT
               </button>
@@ -58,14 +56,13 @@ const ChooseRole = () => {
             <div
               className="px-4 py-2 mt-2mt-4 font-serif text-center
            bg-purple-400 hover:bg-purple-600 w-64 h-10 rounded-2xl"
-              // onClick={chooseRole}
-              onClick={loginWithRedirect}
+              onClick={chooseRole}
             >
               <button
                 type="button"
                 className="font-bold"
                 value="director"
-                // onClick={loginWithRedirect}
+                onClick={loginWithRedirect}
               >
                 DIRECTOR
               </button>

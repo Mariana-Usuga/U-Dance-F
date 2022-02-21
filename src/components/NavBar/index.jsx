@@ -7,33 +7,21 @@ import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useSelector } from 'react-redux';
 import Dropdown from '../Dropdown';
-// import { useDispatch } from 'react-redux';
 // import { fetchSignUp } from '../../store/actions/userActions';
 
 const NavBar = () => {
+  const role = useSelector((state) => state.user.user.role);
   const { user } = useAuth0();
-  // const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-
-  // useEffect(() => {
-  //   if (user) {
-  //     const newUser = {
-  //       name: user.name,
-  //       email: user.email,
-  //       image: user.picture,
-  //     };
-  //     dispatch(fetchSignUp(newUser));
-  //   }
-  // }, [user]);
-  //
 
   return (
     <nav>
       <ul className="flex bg-black h-32 text-white">
         <Link
           className="flex-1 mt-2 ml-60"
-          to="/pages/main"
+          to="/"
           style={{ textDecoration: 'none' }}
         >
           <li>
@@ -41,13 +29,13 @@ const NavBar = () => {
           </li>
         </Link>
         <li className="">
-          {user ? null : <Dropdown />}
+          {user && role === 'director' ? null : <Dropdown />}
         </li>
         <li
           className="text-4xl mt-8 mr-8 text-white font-serif"
           onClick={() => setShowMenu(!showMenu)}
         >
-          {user ? user.given_name : showMenu ? <FaTimes /> : <FaBars /> }
+          {user && role === 'director' ? user.given_name : showMenu ? <FaTimes /> : <FaBars /> }
         </li>
       </ul>
       {showMenu

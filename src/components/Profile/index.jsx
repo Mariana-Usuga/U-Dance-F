@@ -1,13 +1,23 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useAuth0 } from '@auth0/auth0-react';
-import { useEffect } from 'react';
-// import VerticalMenu from '../VerticalMenu';
-// import NavBar from '../NavBar';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { FaPen } from 'react-icons/fa';
+import { fetchGetUser, fetchSignUp, fecthUpdateUser, showModal } from '../../store/actions/userActions';
+import ModalUpdateUser from '../ModalUpdateUser';
 
 const Profile = () => {
+  const dispatch = useDispatch();
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const token = JSON.parse(localStorage.getItem('token'));
+  const userRes = useSelector((state) => state.user.user);
+  const modal = useSelector((state) => state.user.show_modal);
+  const [formUpdateUser, setFormUpdateUser] = useState();
+  // const [userU, setUserU] = useState();
 
   useEffect(() => {
     if (isLoading) {
@@ -15,11 +25,43 @@ const Profile = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (user) {
+      const newUser = {
+        name: user.given_name,
+        lastname: user.family_name,
+        email: user.email,
+        image: user.picture,
+      };
+      dispatch(fetchSignUp(newUser));
+    }
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchGetUser(token));
+  }, [token]);
+
+  const handleChange = (e) => {
+    const { name } = e.target;
+    const { value } = e.target;
+    const newState = { ...formUpdateUser };
+    newState[name] = value;
+    setFormUpdateUser(newState);
+  };
+
+  const sendUpdateData = () => {
+    dispatch(fecthUpdateUser(userRes._id, formUpdateUser));
+    dispatch(showModal());
+  };
+
   return (
-    isAuthenticated && (
+    <>
+      {isAuthenticated && (
       <div className=" w-2/3 mt-10 mb-36 border font-serif bg-slate-50 rounded-md">
         <div className="mb-5 text-center">
-          <div className="mx-auto w-32 h-32 mb-2 border rounded-full relative bg-gray-100 mb-4 shadow-inset">
+          <div className="mx-auto w-32 h-32 mb-2 border rounded-full relative
+           bg-gray-100 mb-4 shadow-inset"
+          >
             <img
               id="image"
               className="object-cover w-full h-32 rounded-full"
@@ -49,59 +91,86 @@ const Profile = () => {
           <div className="flex flex-wrap justify-around">
             <div className="">
               <label
-                htmlFor="firstname"
+                htmlFor="name"
                 className="font-bold mb-1
-           text-gray-700 block"
+              first:text-gray-700 block"
               >
                 Name
               </label>
-              <input
-                type="text"
-                className="px-4 py-3 border focus:ring-gray-500
-                    focus:border-gray-900 w-full sm:text-sm border-gray-300
+              <div className="flex">
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  className="px-4 py-3 border focus:ring-gray-500
+                    focus:border-gray-900 sm:text-sm border-gray-300
                     rounded-md
                       focus:outline-none text-gray-600"
-                placeholder={user.given_name}
-              />
+                  placeholder={userRes.name ? userRes.name : 'user.given_name'}
+                  onChange={handleChange}
+                />
+                <FaPen className="absolute ml-44 mt-3 text-gray-600" />
+              </div>
             </div>
             <div className="">
               <label
-                htmlFor="email"
+                htmlFor="lastname"
                 className="font-bold mb-1
          text-gray-700 block"
               >
                 Lastname
               </label>
-              <input
-                type="email"
-                className="px-4 py-3 border focus:ring-gray-500
+              <div className="flex">
+                <input
+                  name="lastname"
+                  id="lastname"
+                  type="email"
+                  className="px-4 py-3 border focus:ring-gray-500
               focus:border-gray-900 w-full sm:text-sm border-gray-300
               rounded-md
                 focus:outline-none text-gray-600"
-                placeholder={user.family_name}
-              />
+                  placeholder={userRes.lastname ? userRes.lastname : user.family_name}
+                  onChange={handleChange}
+                />
+                <FaPen className="absolute ml-44 mt-3 text-gray-600" />
+              </div>
             </div>
           </div>
           <div className="mb-5 text-center">
             <label
               htmlFor="email"
               className="font-bold mb-1
-         text-gray-700 block"
+            text-gray-700 block"
             >
               Email
             </label>
-            <input
-              type="email"
-              className="px-4 py-3 border focus:ring-gray-500
-            focus:border-gray-900 w-full sm:text-sm border-gray-300
+            <div className="flex">
+              <input
+                name="email"
+                id="email"
+                type="email"
+                className="px-4 py-3 border focus:ring-gray-500
+            focus:border-gray-900 w-4/5 sm:text-sm border-gray-300
             rounded-md
-              focus:outline-none text-gray-600"
-              placeholder={user.email}
-            />
+              focus:outline-none text-black"
+                placeholder={userRes.email ? userRes.email : user.email}
+              />
+              <FaPen className="absolute ml-96 mt-3 text-gray-600" />
+            </div>
           </div>
         </div>
+        <button
+          className="mt-4 bg-purple-400 hover:bg-purple-600 w-64 h-10 rounded-2xl
+            font-bold ml-auto mr-auto"
+          type="button"
+          onClick={sendUpdateData}
+        >
+          Save changes
+        </button>
       </div>
-    )
+      )}
+      {modal ? <ModalUpdateUser btn="OK" /> : null}
+    </>
   );
 };
 

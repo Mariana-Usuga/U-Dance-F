@@ -3,9 +3,17 @@
 import { Link } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useDispatch } from 'react-redux';
+import { fetchLogoutUser } from '../../store/actions/userActions';
 
 const VerticalMenu = () => {
+  const dispatch = useDispatch();
   const { logout } = useAuth0();
+
+  const logoutContext = () => {
+    console.log('entra en logou conte');
+    dispatch(fetchLogoutUser());
+  };
 
   return (
     <div className="flex items-center">
@@ -41,23 +49,11 @@ const VerticalMenu = () => {
             </Link>
           </div>
         </div>
-        <div className="flex flex-row group px-4 py-8
+        <div
+          className="flex flex-row group px-4 py-8
                     border-t hover:cursor-pointer
                     transition-all duration-200 delay-100"
-        >
-          <div className="font-bold text-sm md:text-lg lg:text-xl group-hover:underline">
-            <Link
-              to="/pages/director/createCourse"
-              key="1"
-              style={{ textDecoration: 'none' }}
-            >
-              Alumnos
-            </Link>
-          </div>
-        </div>
-        <div className="flex flex-row group px-4 py-8
-                    border-t hover:cursor-pointer
-                    transition-all duration-200 delay-100"
+          onClick={logoutContext}
         >
           <div
             className="font-bold text-sm md:text-lg lg:text-xl

@@ -4,7 +4,7 @@ import './index.css';
 import { Auth0Provider } from '@auth0/auth0-react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+// import { PersistGate } from 'redux-persist/integration/react';
 import reportWebVitals from './reportWebVitals';
 // import LandingPage from './pages/LandingPage';
 import Layout from './components/Layout';
@@ -22,7 +22,7 @@ import CreateCourse from './pages/CreateCourse';
 import LandingPage from './pages/LandingPage';
 import configureStore from './store/index';
 
-const { store, persistor } = configureStore();
+const { store } = configureStore();
 
 const Routing = () => (
   <BrowserRouter>
@@ -39,9 +39,9 @@ const Routing = () => (
         <Route path="director" element={<Layout2 />}>
           <Route path="courseList" element={<CourseList />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="createCourse" element={<CreateCourse />} />
         </Route>
 
-        <Route path="createCourse" element={<CreateCourse />} />
       </Route>
 
       <Route
@@ -65,9 +65,9 @@ ReactDOM.render(
       redirectUri={window.location.origin}
     >
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <Routing />
-        </PersistGate>
+        {/* <PersistGate loading={null} persistor={persistor}> */}
+        <Routing />
+        {/* </PersistGate> */}
       </Provider>
     </Auth0Provider>
   </React.StrictMode>,

@@ -12,3 +12,34 @@ export const postSignUp = async (user) => {
     return error;
   }
 };
+
+export const getMe = async (token) => {
+  const responseData = await axios.get(`${URL_BASE}/api/user/me`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+  // console.log('res in serv', responseData);
+  return responseData;
+};
+
+export const postUpdate = async (id, user) => {
+  try {
+    const res = await axios.patch(`${URL_BASE}/api/user/${id}`, user);
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getCoursesByUser = async () => {
+  const token = JSON.parse(localStorage.getItem('token'));
+  const responseData = await axios.get(`${URL_BASE}/api/course/coursesByUser`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+  return responseData;
+};

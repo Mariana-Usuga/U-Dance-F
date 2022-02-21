@@ -32,7 +32,8 @@ const DetailTeacher = () => {
           <p className="pt-6">{course?.description.toUpperCase()}</p>
           <p className="pt-4">{course?.place.toUpperCase()}</p>
           <button
-            className="mt-4 bg-purple-400 hover:bg-purple-600 w-64 h-10 rounded-2xl font-bold"
+            className="mt-4 bg-purple-400 hover:bg-purple-600 w-64 h-10 rounded-2xl
+            font-bold"
             type="button"
           >
             <Link

@@ -4,7 +4,7 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable no-underscore-dangle */
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import CardCourse from '../../components/CardCourse';
@@ -12,17 +12,27 @@ import { fetchCourses } from '../../store/actions/courseActions';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import ChooseRole from '../ChooseRole';
-// import Profile from '../../components/Profile';
+import { fetchSignUp } from '../../store/actions/userActions';
 
 const LandingPage = () => {
   const navigate = useNavigate();
-  const [role, setRole] = useState('student');
+  const role = useSelector((state) => state.user.user?.role);
   const { user } = useAuth0();
   const dispatch = useDispatch();
   const courses = useSelector((state) => state.course.courses);
   useEffect(() => {
-    setRole('director');
     dispatch(fetchCourses());
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      const newUser = {
+        name: user.name,
+        email: user.email,
+        image: user.picture,
+      };
+      dispatch(fetchSignUp(newUser));
+    }
   }, []);
 
   return (
