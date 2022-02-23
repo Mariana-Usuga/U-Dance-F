@@ -1,7 +1,11 @@
 /// <reference types="Cypress" />
+/* eslint-disable quotes */
 /* eslint-disable no-undef */
 
 describe('my first test', () => {
+  // beforeEach(() => {
+  //   cy.visit('/');
+  // });
   it('actually works', () => {
     cy.visit('/');
     cy.contains('ARE YOU?');
@@ -10,6 +14,7 @@ describe('my first test', () => {
   });
 
   it('onClik', () => {
-    cy.get('student').click();
+    cy.visit('/');
+    cy.get(`[data-cy='student']`).click();
   });
 });
