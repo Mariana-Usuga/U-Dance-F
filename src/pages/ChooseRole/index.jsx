@@ -34,7 +34,7 @@ const ChooseRole = () => {
             >
               <button
                 type="button"
-                className="font-bold"
+                className="font-bold student"
                 value="student"
               >
                 STUDENT
@@ -60,7 +60,7 @@ const ChooseRole = () => {
             >
               <button
                 type="button"
-                className="font-bold"
+                className="font-bold director"
                 value="director"
                 onClick={loginWithRedirect}
               >
