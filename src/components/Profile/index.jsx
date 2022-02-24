@@ -1,14 +1,16 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable consistent-return */
-/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaPen } from 'react-icons/fa';
 import { fetchGetUser, fetchSignUp, fecthUpdateUser, showModal } from '../../store/actions/userActions';
-import ModalUpdateUser from '../ModalUpdateUser';
+import ModalFunctional from '../ModalFunctional';
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -17,7 +19,6 @@ const Profile = () => {
   const userRes = useSelector((state) => state.user.user);
   const modal = useSelector((state) => state.user.show_modal);
   const [formUpdateUser, setFormUpdateUser] = useState();
-  // const [userU, setUserU] = useState();
 
   useEffect(() => {
     if (isLoading) {
@@ -169,7 +170,8 @@ const Profile = () => {
         </button>
       </div>
       )}
-      {modal ? <ModalUpdateUser btn="OK" /> : null}
+      {modal ? <ModalFunctional btn="OK" description="Successfully saved your changes" />
+        : null}
     </>
   );
 };

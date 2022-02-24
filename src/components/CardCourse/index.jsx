@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 // max-w-sm rounded material-card bg-blue-600
 // w-full rounded-t  in img
 const CardCourse = ({ course }) => (
-  <div className="w-96">
+  <div className="w-96" data-cy={course.title}>
     <img
       className="rounded-t"
       src={course.image}

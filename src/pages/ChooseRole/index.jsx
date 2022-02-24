@@ -37,6 +37,7 @@ const ChooseRole = () => {
                 className="font-bold"
                 data-cy="student"
                 value="student"
+                onClick={loginWithRedirect}
               >
                 STUDENT
               </button>

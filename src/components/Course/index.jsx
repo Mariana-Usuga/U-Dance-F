@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { showModal } from '../../store/actions/userActions';
-import ModalUpdateUser from '../ModalUpdateUser';
+import Modal from '../ModalFunctional';
 
 const Course = ({ course }) => {
   const dispatch = useDispatch();
@@ -60,7 +60,14 @@ const Course = ({ course }) => {
           </button>
         </td>
       </tr>
-      {modal ? <ModalUpdateUser btn="delete" cancel="Cancel" idCourse={course._id} /> : null}
+      {modal ? (
+        <Modal
+          btn="delete"
+          cancel="Cancel"
+          idCourse={course._id}
+          description="Do you really want to delete your course"
+        />
+      ) : null}
     </>
   );
 };

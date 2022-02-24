@@ -4,7 +4,7 @@ const Footer = () => {
   const menu = ['About', 'Services', 'Why us', 'Contact'];
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-black">
+    <div className="w-full min-h-screen flex items-center justify-center bg-black" data-cy="footer">
       <div className="md:w-2/3 w-full px-4 text-white flex flex-col">
         <div className="flex flex-col">
           <div className="flex mt-24 mb-12 flex-row justify-between">

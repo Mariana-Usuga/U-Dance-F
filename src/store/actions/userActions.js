@@ -7,7 +7,6 @@ import { postSignUp, postUpdate, getMe, getCoursesByUser } from '../service/user
 export const fetchSignUp = (user) => async (dispatch) => {
   const res = await postSignUp(user);
   const { JWT: token } = res.data;
-  console.log('token in fetch', token);
   localStorage.setItem('token', JSON.stringify(token));
   dispatch({
     type: LOGIN_SUCCESSFUL,

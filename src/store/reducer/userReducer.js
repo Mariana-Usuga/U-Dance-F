@@ -14,7 +14,6 @@ const initialState = {
 };
 
 const userReducer = (state = initialState, action) => {
-  console.log('update user', action.payload);
   switch (action.type) {
     case SIGN_UP_SUCCESSFUL:
       return { ...state, token: action.payload };

@@ -23,7 +23,7 @@ const Dropdown = () => {
           <span className=" text-white text-2xl" onClick={toggleOpen}>
             Courses
           </span>
-          <span className="text-white mt-2" onClick={toggleOpen}>
+          <span className="text-white mt-2" data-cy="dropdown" onClick={toggleOpen}>
             {showDropdown ? <FaChevronUp className="w-10" />
               : <FaChevronDown className="w-10" />}
           </span>
@@ -33,6 +33,7 @@ const Dropdown = () => {
         <ul className="text-center z-10 absolute">
           {rhythm.map((item) => (
             <div
+              data-cy="rhythm"
               className="p-5 bg-blue-600 text-white font-serif z-50"
               onClik={() => setShowDropdown(!showDropdown)}
             >
@@ -41,7 +42,7 @@ const Dropdown = () => {
                 key={item}
                 style={{ textDecoration: 'none' }}
               >
-                salsa
+                {item}
               </Link>
             </div>
           )) }

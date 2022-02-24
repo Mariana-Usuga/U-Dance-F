@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCourse } from '../../store/actions/courseActions';
-import ModalUpdateUser from '../../components/ModalUpdateUser';
+import Modal from '../../components/ModalFunctional';
 import { showModal } from '../../store/actions/userActions';
 
 const URL_BASE = 'http://localhost:8080';
@@ -35,8 +35,6 @@ const CreateCourse = () => {
       `${URL_BASE}/api/upload/file`,
       formDataImage,
     );
-    const total = parseFloat(formCourse.price.replace(/,/g, ''));
-    console.log('tot', total);
     const newCourse = {
       title: formCourse.title,
       teacher: formCourse.teacher,
@@ -165,7 +163,7 @@ const CreateCourse = () => {
           </div>
         </div>
       </div>
-      {modal ? <ModalUpdateUser btn="OK" /> : null}
+      {modal ? <Modal btn="OK" /> : null}
     </>
   );
 };

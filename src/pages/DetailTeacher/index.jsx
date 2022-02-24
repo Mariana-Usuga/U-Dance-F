@@ -27,7 +27,7 @@ const DetailTeacher = () => {
           <img className="h-3/4 ml-auto mr-auto" src={course?.image} alt="ChitChat Logo" />
         </div>
         <div className="w-2/4 pr-8 pl-8">
-          <h4 className="text-2xl">{course?.title.toUpperCase()}</h4>
+          <h4 className="text-2xl" data-cy={course?.title}>{course?.title.toUpperCase()}</h4>
           <p className="text-2xl">{course?.teacher.toUpperCase()}</p>
           <p className="pt-6">{course?.description.toUpperCase()}</p>
           <p className="pt-4">{course?.place.toUpperCase()}</p>
@@ -35,9 +35,10 @@ const DetailTeacher = () => {
             className="mt-4 bg-purple-400 hover:bg-purple-600 w-64 h-10 rounded-2xl
             font-bold"
             type="button"
+            data-cy="take-a-course"
           >
             <Link
-              to="/pay"
+              to="/pages/pay"
               style={{ textDecoration: 'none' }}
             >
               TOMAR CURSO

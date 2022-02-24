@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { hiddenModal } from '../../store/actions/userActions';
 import { fetchRemoveCourse } from '../../store/actions/courseActions';
 
-const ModalUpdateUser = ({ btn, cancel, idCourse }) => {
+const ModalFunctional = ({ btn, cancel, idCourse, description }) => {
   const dispatch = useDispatch();
 
   const removeCourse = (id) => {
@@ -28,7 +28,7 @@ const ModalUpdateUser = ({ btn, cancel, idCourse }) => {
             <FaCheckCircle className="w-16 h-16 flex items-center mx-auto
            hover:bg-purple-600 rounded-full text-purple-400"
             />
-            <h2 className="text-xl font-bold py-4 ">Successfully saved your changes</h2>
+            <h2 className="text-xl font-bold py-4 ">{description}</h2>
           </div>
           <div className="p-3  mt-2 text-center space-x-4 md:block">
             <button
@@ -43,7 +43,7 @@ const ModalUpdateUser = ({ btn, cancel, idCourse }) => {
               className="mb-2 md:mb-0 bg-purple-400 hover:bg-purple-600 px-5 py-2
                text-sm shadow-sm font-medium tracking-wider
            text-white rounded-full hover:shadow-lg"
-              onClick={() => removeCourse(idCourse)}
+              onClick={btn === 'delete' ? removeCourse(idCourse) : dispatch(hiddenModal())}
             >
               {btn}
             </button>
@@ -55,4 +55,4 @@ const ModalUpdateUser = ({ btn, cancel, idCourse }) => {
   );
 };
 
-export default ModalUpdateUser;
+export default ModalFunctional;
