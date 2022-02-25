@@ -1,17 +1,21 @@
 /* eslint-disable react/prop-types */
 import { FaCheckCircle } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
+// import { Link } from 'react-router-dom';
 import { hiddenModal } from '../../store/actions/userActions';
-import { fetchRemoveCourse } from '../../store/actions/courseActions';
+// import { fetchRemoveCourse } from '../../store/actions/courseActions';
 
-const ModalFunctional = ({ btn, cancel, idCourse, description }) => {
+const ModalFunctional = ({ btn, cancel, /* idCourse, */ description }) => {
   const dispatch = useDispatch();
-
-  const removeCourse = (id) => {
-    dispatch(fetchRemoveCourse(id));
-    dispatch(hiddenModal());
-    window.location.reload();
-  };
+  console.log('working');
+  // const removeCourse = (id) => {
+  //   if (btn === 'delete') {
+  //     dispatch(fetchRemoveCourse(id));
+  //     dispatch(hiddenModal());
+  //     window.location.reload();
+  //   }
+  //   dispatch(hiddenModal());
+  // };
 
   return (
     <div
@@ -38,16 +42,27 @@ const ModalFunctional = ({ btn, cancel, idCourse, description }) => {
             >
               {cancel}
             </button>
+
             <button
               type="button"
               className="mb-2 md:mb-0 bg-purple-400 hover:bg-purple-600 px-5 py-2
                text-sm shadow-sm font-medium tracking-wider
-           text-white rounded-full hover:shadow-lg"
-              onClick={btn === 'delete' ? removeCourse(idCourse) : dispatch(hiddenModal())}
+           text-white rounded-full hover:shadow-lg btn-modal-ok"
+              data-cy="btn-modal-ok"
+              onClick={() => dispatch(hiddenModal())}
             >
               {btn}
+              {/* {description === 'Successful Purchase'
+                ? (
+                  <Link
+                    to="/"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    {btn}
+                  </Link>
+                )
+                : btn} */}
             </button>
-
           </div>
         </div>
       </div>

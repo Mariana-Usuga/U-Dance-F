@@ -46,7 +46,7 @@ const Pay = () => {
     dispatch(fetchPay(paymentData));
     dispatch(showModal());
   };
-  // min-w-screen min-h-screen bg-gray-200 flex items-center justify-center px-5 pb-10 pt-16
+
   return (
     <>
       <div className="h-screen bg-no-repeat bg-cover
@@ -152,7 +152,7 @@ const Pay = () => {
           </div>
         </div>
       </div>
-      {modal ? <Modal description="Successful Purchase" btn="OK" /> : null}
+      {modal ? <Modal description="Successful Purchase" btn="Back to home" /> : null}
     </>
   );
 };

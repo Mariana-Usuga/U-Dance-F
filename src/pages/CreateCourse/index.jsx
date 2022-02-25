@@ -65,6 +65,7 @@ const CreateCourse = () => {
                     <div className="flex flex-col">
                       <label className="leading-loose">Course Title</label>
                       <input
+                        data-cy="input-course-title"
                         type="text"
                         name="title"
                         className="px-4 py-2 border focus:ring-gray-500
@@ -76,6 +77,7 @@ const CreateCourse = () => {
                     <div className="flex flex-col">
                       <label className="leading-loose">Teacher</label>
                       <input
+                        data-cy="input-course-teacher"
                         type="text"
                         name="teacher"
                         className="px-4 py-2 border focus:ring-gray-500
@@ -89,6 +91,7 @@ const CreateCourse = () => {
                     <div className="flex flex-col">
                       <label className="leading-loose">Price</label>
                       <input
+                        data-cy="input-course-price"
                         type="text"
                         name="price"
                         className="px-4 py-2 border focus:ring-gray-500
@@ -100,6 +103,7 @@ const CreateCourse = () => {
                     <div className="flex flex-col">
                       <label className="leading-loose">Rhythm</label>
                       <input
+                        data-cy="input-course-rhythm"
                         type="text"
                         name="rhythm"
                         className="px-4 py-2 border focus:ring-gray-500
@@ -112,6 +116,7 @@ const CreateCourse = () => {
                   <div className="flex flex-col">
                     <label className="leading-loose">Place</label>
                     <input
+                      data-cy="input-course-place"
                       type="text"
                       name="place"
                       className="px-4 py-2 border focus:ring-gray-500
@@ -123,6 +128,7 @@ const CreateCourse = () => {
                   <div className="flex flex-col">
                     <label className="leading-loose">Event Description</label>
                     <textarea
+                      data-cy="input-course-description"
                       type="text"
                       name="description"
                       className="px-4 py-2 border focus:ring-gray-500 h-40
@@ -140,7 +146,8 @@ const CreateCourse = () => {
                   Upload course image
                 </label>
                 <input
-                  className="createProductContainer__item__images__inputImg"
+                  data-cy="input-upload-course-image"
+                  className="createProductContainer__item__images__inputImg upload"
                   onChange={onChangeFile}
                   type="file"
                   name="image"
@@ -150,6 +157,7 @@ const CreateCourse = () => {
                 />
                 <div className="pt-4 flex items-center space-x-4">
                   <button
+                    data-cy="btn-create-course"
                     type="button"
                     className="font-bold px-4 py-2 mt-2mt-4 font-serif text-center
                  bg-purple-400 hover:bg-purple-600 w-64 h-10 rounded-2xl "

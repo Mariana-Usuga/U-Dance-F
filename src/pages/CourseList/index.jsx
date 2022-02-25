@@ -11,7 +11,7 @@ const CourseList = () => {
   useEffect(() => {
     dispatch(fecthCoursesByUser());
   }, []);
-
+  console.log('cour', courses);
   return (
     <div className="bg-white p-8 rounded-md w-2/3 font-serif font-bold">
       <div className=" flex items-center justify-between pb-6">
@@ -26,8 +26,9 @@ const CourseList = () => {
                 to="/pages/director/createCourse"
                 key="1"
                 style={{ textDecoration: 'none' }}
+                data-cy="btn-create-course"
               >
-                Crear un curso
+                Create a course
               </Link>
             </button>
           </div>
@@ -67,7 +68,7 @@ const CourseList = () => {
                 </tr>
               </thead>
               <tbody>
-                {courses.length === 0 ? 'No tienes cursos'
+                {courses?.length === 0 ? 'No tienes cursos'
                   : courses?.map((course) => (
                     <Course course={course} />
                   ))}

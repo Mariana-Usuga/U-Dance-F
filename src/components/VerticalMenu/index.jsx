@@ -2,16 +2,15 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Link } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
-import { useAuth0 } from '@auth0/auth0-react';
+// import { useAuth0 } from '@auth0/auth0-react';
 import { useDispatch } from 'react-redux';
 import { fetchLogoutUser } from '../../store/actions/userActions';
 
 const VerticalMenu = () => {
   const dispatch = useDispatch();
-  const { logout } = useAuth0();
+  // const { logout } = useAuth0();
 
   const logoutContext = () => {
-    console.log('entra en logou conte');
     dispatch(fetchLogoutUser());
   };
 
@@ -27,10 +26,11 @@ const VerticalMenu = () => {
               to="/pages/director/profile"
               key="1"
               style={{ textDecoration: 'none' }}
+              data-cy="profile"
             >
               <div className="flex">
                 <FaUserAlt />
-                Perfil
+                Profile
               </div>
             </Link>
           </div>
@@ -44,8 +44,9 @@ const VerticalMenu = () => {
               to="/pages/director/courseList"
               key="1"
               style={{ textDecoration: 'none' }}
+              data-cy="link-courses-list"
             >
-              Cursos
+              Courses
             </Link>
           </div>
         </div>
@@ -58,9 +59,16 @@ const VerticalMenu = () => {
           <div
             className="font-bold text-sm md:text-lg lg:text-xl
             group-hover:underline"
-            onClick={() => logout({ returnTo: window.location.origin })}
+            // onClick={() => logout({ returnTo: window.location.origin })}
           >
-            Logout
+            <Link
+              to="/"
+              key="1"
+              style={{ textDecoration: 'none' }}
+              data-cy="link-logout"
+            >
+              Logout
+            </Link>
           </div>
         </div>
       </div>

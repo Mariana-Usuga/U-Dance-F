@@ -1,15 +1,25 @@
 /* eslint-disable no-underscore-dangle */
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { showModal } from '../../store/actions/userActions';
+// import { showModal } from '../../store/actions/userActions';
+import { fetchRemoveCourse } from '../../store/actions/courseActions';
 import Modal from '../ModalFunctional';
 
 const Course = ({ course }) => {
   const dispatch = useDispatch();
   const modal = useSelector((state) => state.user.show_modal);
 
-  const showM = () => {
-    dispatch(showModal());
+  // const showM = () => {
+  //   dispatch(showModal());
+  // };
+
+  const removeCourse = (id) => {
+    // if (btn === 'delete') {
+    dispatch(fetchRemoveCourse(id));
+    // dispatch(hiddenModal());
+    window.location.reload();
+    // }
+    // dispatch(hiddenModal());
   };
 
   return (
@@ -51,10 +61,13 @@ const Course = ({ course }) => {
         </td>
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <button
+            data-cy={`btn-delete-course-${course._id}`}
             className="mt-4 bg-red-400 hover:bg-red-600 w-24 h-8 rounded-2xl
             font-bold"
             type="button"
-            onClick={showM}
+            // onClick={showM}
+            onClick={() => removeCourse(course._id)}
+            // onClick={() => console.log('workinggggg')}
           >
             Delete
           </button>

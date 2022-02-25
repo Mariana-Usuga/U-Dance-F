@@ -19,5 +19,7 @@ describe('Detail teacher', () => {
     cy.get('select#expiration-date-month').select('02');
     cy.get('select#expiration-date-year').select('2023');
     cy.get(`[data-cy='cvc']`).type('123');
+    cy.get(`[data-cy='btn-send-payment-form']`).click();
+    cy.get(`[data-cy='btn-modal-ok']`).click();
   });
 });

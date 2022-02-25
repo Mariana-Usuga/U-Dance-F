@@ -34,7 +34,8 @@ export const postUpdate = async (id, user) => {
 };
 
 export const getCoursesByUser = async () => {
-  const token = JSON.parse(localStorage.getItem('token'));
+  // const token = JSON.parse(localStorage.getItem('token'));
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlhbmF1c3VnYW1vbnRveWExMjM0NEBnbWFpbC5jb20iLCJfaWQiOiI2MjE2YjZhZmRjNDcyYzJjYmMyMWJmNGQiLCJuYW1lIjoibWFyaWFuYSIsImlhdCI6MTY0NTY1NTcyNywiZXhwIjoxNjQ2MjYwNTI3fQ.4A8Jc9QqMcKPlJRVPpEUASXxpn-JFeFO9eYXqS18Q4U';
   const responseData = await axios.get(`${URL_BASE}/api/course/coursesByUser`, {
     headers: {
       Authorization: `Bearer ${token}`,

@@ -3,12 +3,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from 'react-router-dom';
+// import { useAuth0 } from '@auth0/auth0-react';
 import { fetchRole } from '../../store/actions/userActions';
 
 const ChooseRole = () => {
   const dispatch = useDispatch();
-  const { loginWithRedirect } = useAuth0();
+  // const { loginWithRedirect } = useAuth0();
 
   const chooseRole = (e) => {
     dispatch(fetchRole(e.target.value));
@@ -37,7 +38,7 @@ const ChooseRole = () => {
                 className="font-bold"
                 data-cy="student"
                 value="student"
-                onClick={loginWithRedirect}
+                // onClick={loginWithRedirect}
               >
                 STUDENT
               </button>
@@ -63,11 +64,16 @@ const ChooseRole = () => {
               <button
                 type="button"
                 className="font-bold"
-                data-cy="director"
                 value="director"
-                onClick={loginWithRedirect}
+                // onClick={loginWithRedirect}
               >
-                DIRECTOR
+                <Link
+                  to="/pages/director/profile"
+                  style={{ textDecoration: 'none' }}
+                  data-cy="director"
+                >
+                  DIRECTOR
+                </Link>
               </button>
             </div>
           </div>

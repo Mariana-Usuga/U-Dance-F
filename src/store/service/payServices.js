@@ -7,7 +7,7 @@ const token = JSON.parse(localStorage.getItem('token'));
 
 export const postPay = async (paymentData) => {
   const response = await axios.post(
-    `${URL_BASE}/api/payments/make-payment`,
+    `${URL_BASE}/api/payment/make-payment`,
     paymentData,
     {
       headers: {
