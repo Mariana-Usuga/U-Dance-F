@@ -6,7 +6,6 @@ import { postSignUp, postUpdate, getMe, getCoursesByUser } from '../service/user
 
 export const fetchSignUp = (user) => async (dispatch) => {
   const res = await postSignUp(user);
-  console.log('res de sign', res.data);
   const { JWT: token } = res.data;
   localStorage.setItem('token', JSON.stringify(token));
   dispatch({
@@ -16,7 +15,6 @@ export const fetchSignUp = (user) => async (dispatch) => {
 };
 
 export const fetchRole = (role) => async (dispatch) => {
-  console.log('entra en fetchrole');
   dispatch({
     type: ROLE,
     payload: role,
