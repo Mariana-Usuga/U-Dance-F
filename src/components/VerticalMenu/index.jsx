@@ -30,7 +30,7 @@ const VerticalMenu = () => {
             >
               <div className="flex">
                 <FaUserAlt />
-                Profilee
+                Profile
               </div>
             </Link>
           </div>
