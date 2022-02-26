@@ -24,9 +24,7 @@ export const fetchRole = (role) => async (dispatch) => {
 };
 
 export const fetchGetUser = (token) => async (dispatch) => {
-  console.log('entra en fetch get user');
   const user = await getMe(token);
-  console.log('user get me in fetch', user);
   dispatch({
     type: GET_ME,
     payload: user.data,
@@ -34,7 +32,6 @@ export const fetchGetUser = (token) => async (dispatch) => {
 };
 
 export const fecthUpdateUser = (id, user) => async (dispatch) => {
-  console.log('entra en fecth update user', id, 'user', user);
   const userRes = await postUpdate(id, user);
   dispatch({
     type: UPDATE_SUCCESSFUL,
@@ -69,14 +66,3 @@ export const fecthCoursesByUser = () => async (dispatch) => {
     payload: courses.data,
   });
 };
-// export const fetchLogin = (email, password) => async (dispatch) => {
-//   const res = await postLogin(email, password);
-//   if (res.statusText === 'OK') {
-//     const { JWT: token } = res.data;
-//     localStorage.setItem('token', JSON.stringify(token));
-//     dispatch(loginUserSucess(token));
-//     return token;
-//   }
-//   dispatch(loginUserFailure());
-//   return null;
-// };
