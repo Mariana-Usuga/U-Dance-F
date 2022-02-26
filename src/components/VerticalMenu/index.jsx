@@ -2,13 +2,13 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Link } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
-// import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth0 } from '@auth0/auth0-react';
 import { useDispatch } from 'react-redux';
 import { fetchLogoutUser } from '../../store/actions/userActions';
 
 const VerticalMenu = () => {
   const dispatch = useDispatch();
-  // const { logout } = useAuth0();
+  const { logout } = useAuth0();
 
   const logoutContext = () => {
     dispatch(fetchLogoutUser());
@@ -59,7 +59,7 @@ const VerticalMenu = () => {
           <div
             className="font-bold text-sm md:text-lg lg:text-xl
             group-hover:underline"
-            // onClick={() => logout({ returnTo: window.location.origin })}
+            onClick={() => logout({ returnTo: window.location.origin })}
           >
             <Link
               to="/"

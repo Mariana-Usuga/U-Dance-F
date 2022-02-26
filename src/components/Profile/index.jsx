@@ -1,8 +1,5 @@
 /* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable import/no-named-as-default-member */
-/* eslint-disable import/no-named-as-default */
-/* eslint-disable no-nested-ternary */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -11,15 +8,15 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaPen } from 'react-icons/fa';
 import axios from 'axios';
-import { fetchGetUser, /* fetchSignUp, */ fecthUpdateUser /* showModal */ } from '../../store/actions/userActions';
+import { fetchGetUser, fetchSignUp, fecthUpdateUser, showModal } from '../../store/actions/userActions';
 import ModalFunctional from '../ModalFunctional';
 
 const URL_BASE = 'http://localhost:8080';
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const { isLoading, user } = useAuth0();
-  // const token = JSON.parse(localStorage.getItem('token'));
+  const { isLoading, user, isAuthenticated } = useAuth0();
+  const token = JSON.parse(localStorage.getItem('token'));
   const userRes = useSelector((state) => state.user.user);
   const modal = useSelector((state) => state.user.show_modal);
   const [formUpdateUser, setFormUpdateUser] = useState();
@@ -31,21 +28,22 @@ const Profile = () => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   if (user) {
-  //     const newUser = {
-  //       name: user.given_name,
-  //       lastname: user.family_name,
-  //       email: user.email,
-  //       image: user.picture,
-  //     };
-  //     dispatch(fetchSignUp(newUser));
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (user) {
+      const newUser = {
+        name: user.given_name,
+        lastname: user.family_name,
+        email: user.email,
+        image: user.picture,
+      };
+      dispatch(fetchSignUp(newUser));
+    }
+  }, [user]);
 
   useEffect(() => {
-    dispatch(fetchGetUser('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlhbmF1c3VnYW1vbnRveWExMjM0NEBnbWFpbC5jb20iLCJfaWQiOiI2MjE2YjZhZmRjNDcyYzJjYmMyMWJmNGQiLCJuYW1lIjoibWFyaWFuYSIsImlhdCI6MTY0NTY1NTcyNywiZXhwIjoxNjQ2MjYwNTI3fQ.4A8Jc9QqMcKPlJRVPpEUASXxpn-JFeFO9eYXqS18Q4U'));
-    // window.location.reload();
+    dispatch(
+      fetchGetUser(token),
+    );
   }, []);
 
   const handleChange = (e) => {
@@ -54,7 +52,6 @@ const Profile = () => {
     const newState = { ...formUpdateUser };
     newState[name] = value;
     setFormUpdateUser(newState);
-    console.log('form in inputs', formUpdateUser);
   };
 
   const sendUpdateData = async () => {
@@ -65,16 +62,16 @@ const Profile = () => {
       `${URL_BASE}/api/upload/file`,
       formDataImage,
     );
-    console.log('image', responseImage.data.url);
+
     const dataUser = {
       image: responseImage.data.url,
       name: formUpdateUser.name,
       lastname: formUpdateUser.lastname,
     };
     dispatch(fecthUpdateUser(userRes._id, dataUser));
-    // dispatch(showModal());
+    dispatch(showModal());
   };
-  // console.log('useRes', userRes);
+
   const onChangeFile = async (e) => {
     const reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
@@ -82,17 +79,15 @@ const Profile = () => {
       setChagePhoto(reader.result);
     };
 
-    // setChagePhoto(e.target.files[0]);
-
     setFormUpdateUser((formUpdateUser) => ({
       ...formUpdateUser,
       image: e.target.files[0],
     }));
-    // console.log('form', formUpdateUser);
   };
+
   return (
     <>
-      {/* {isAuthenticated && ( */}
+      {isAuthenticated && (
       <div className=" w-2/3 mt-10 mb-36 border font-serif bg-slate-50 rounded-md">
         <div className="mb-5 text-center">
           <div className="mx-auto w-32 h-32 mb-2 border rounded-full relative
@@ -116,12 +111,14 @@ const Profile = () => {
               <path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
               <circle cx="12" cy="13" r="3" />
             </svg>
-            Browse Photo
+            Add photo
           </label>
 
-          <div className="mx-auto w-48 text-gray-500 text-xs text-center mt-1">Click to add profile picture</div>
-
+          <div className="mx-auto w-48 text-gray-500 text-xs text-center mt-1">
+            Click to add profile picture
+          </div>
           <input
+            data-cy="profile-picture"
             name="photo"
             id="fileInput"
             accept="image/*"
@@ -134,6 +131,7 @@ const Profile = () => {
           <div className="flex flex-wrap justify-around">
             <div className="">
               <label
+                data-cy="name-label"
                 htmlFor="name"
                 className="font-bold mb-1
               first:text-gray-700 block"
@@ -158,6 +156,7 @@ const Profile = () => {
             </div>
             <div className="">
               <label
+                data-cy="lastname-label"
                 htmlFor="lastname"
                 className="font-bold mb-1
          text-gray-700 block"
@@ -175,7 +174,6 @@ const Profile = () => {
               rounded-md
                 focus:outline-none text-gray-600"
                   placeholder={userRes.lastname ? userRes.lastname : user.family_name}
-                  // placeholder={userRes.lastname}
                   onChange={handleChange}
                 />
                 <FaPen className="absolute ml-44 mt-3 text-gray-600" />
@@ -184,6 +182,7 @@ const Profile = () => {
           </div>
           <div className="mb-5 text-center">
             <label
+              data-cy="email-label"
               htmlFor="email"
               className="font-bold mb-1
             text-gray-700 block"
@@ -200,7 +199,6 @@ const Profile = () => {
             rounded-md
               focus:outline-none text-black"
                 placeholder={userRes.email ? userRes.email : user.email}
-                // placeholder={userRes.email}
               />
               <FaPen className="absolute ml-96 mt-3 text-gray-600" />
             </div>
@@ -216,7 +214,7 @@ const Profile = () => {
           Save changes
         </button>
       </div>
-      {/* )} */}
+      )}
       {modal ? <ModalFunctional btn="ok" description="Successfully saved your changes" />
         : null}
     </>

@@ -1,20 +1,13 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useState } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useSelector } from 'react-redux';
 import Dropdown from '../Dropdown';
-// import { fetchSignUp } from '../../store/actions/userActions';
 
 const NavBar = () => {
   const role = useSelector((state) => state.user.user.role);
-  const { user } = useAuth0();
-  const [showMenu, setShowMenu] = useState(false);
+  const { user, logoutContext } = useAuth0();
 
   return (
     <nav>
@@ -31,26 +24,8 @@ const NavBar = () => {
         <li className="">
           {user && role === 'director' ? null : <Dropdown />}
         </li>
-        <li
-          className="text-4xl mt-8 mr-8 text-white font-serif"
-          onClick={() => setShowMenu(!showMenu)}
-        >
-          {user && role === 'director' ? user.given_name : showMenu ? <FaTimes /> : <FaBars /> }
-        </li>
+        <li onClick={logoutContext} className="text-2xl mt-8 mr-8 text-white font-serif">Logout</li>
       </ul>
-      {showMenu
-        && (
-        <ul className="text-center absolute right-0 w-2/3 z-10">
-          <li className="p-5 bg-black text-white font-serif">Home</li>
-          <li className="p-5 bg-black text-white font-serif">Course</li>
-          <li className="p-5 bg-black text-white font-serif">
-            <button>
-              Log in
-            </button>
-          </li>
-          <li className="p-5 bg-black text-white font-serif">Sign up</li>
-        </ul>
-        )}
     </nav>
   );
 };

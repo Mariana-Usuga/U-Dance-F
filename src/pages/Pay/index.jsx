@@ -12,14 +12,7 @@ import Modal from '../../components/ModalFunctional';
 const Pay = () => {
   const dispatch = useDispatch();
   const modal = useSelector((state) => state.user.show_modal);
-
-  const [form, setForm] = useState({
-    holdersName: '',
-    number: '',
-    month: '',
-    year: '',
-    cvc: '',
-  });
+  const [form, setForm] = useState();
 
   const handleChange = (e) => {
     const { name } = e.target;
@@ -72,6 +65,8 @@ const Pay = () => {
             <label className="font-bold text-sm mb-2 ml-1">Card Number</label>
             <div>
               <input
+                onChange={handleChange}
+                name="number"
                 className="w-full px-3 py-2 mb-1 border-2 border-gray-200
               rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
                 placeholder="0000 0000 0000 0000"
@@ -85,6 +80,7 @@ const Pay = () => {
               <label className="font-bold text-sm mb-2 ml-1">Expiration date</label>
               <div>
                 <select
+                  name="month"
                   onChange={handleChange}
                   className="form-select w-full px-3 py-2
                mb-1 border-2 border-gray-200 rounded-md focus:outline-none
@@ -108,6 +104,7 @@ const Pay = () => {
             </div>
             <div className="px-2 w-1/2">
               <select
+                name="year"
                 onChange={handleChange}
                 className="form-select w-full px-3 py-2 mb-1
               border-2 border-gray-200 rounded-md focus:outline-none
@@ -130,6 +127,7 @@ const Pay = () => {
             <label className="font-bold text-sm mb-2 ml-1">CVC</label>
             <div>
               <input
+                name="cvc"
                 onChange={handleChange}
                 className="w-32 px-3 py-2 mb-1 border-2
              border-gray-200 rounded-md focus:outline-none focus:border-indigo-500

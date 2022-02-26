@@ -6,6 +6,7 @@ import { postSignUp, postUpdate, getMe, getCoursesByUser } from '../service/user
 
 export const fetchSignUp = (user) => async (dispatch) => {
   const res = await postSignUp(user);
+  console.log('res de sign', res.data);
   const { JWT: token } = res.data;
   localStorage.setItem('token', JSON.stringify(token));
   dispatch({
@@ -15,6 +16,7 @@ export const fetchSignUp = (user) => async (dispatch) => {
 };
 
 export const fetchRole = (role) => async (dispatch) => {
+  console.log('entra en fetchrole');
   dispatch({
     type: ROLE,
     payload: role,
@@ -22,9 +24,9 @@ export const fetchRole = (role) => async (dispatch) => {
 };
 
 export const fetchGetUser = (token) => async (dispatch) => {
-  // console.log('entra en fe');
+  console.log('entra en fetch get user');
   const user = await getMe(token);
-  // console.log('user get me in fetch', user);
+  console.log('user get me in fetch', user);
   dispatch({
     type: GET_ME,
     payload: user.data,
@@ -32,6 +34,7 @@ export const fetchGetUser = (token) => async (dispatch) => {
 };
 
 export const fecthUpdateUser = (id, user) => async (dispatch) => {
+  console.log('entra en fecth update user', id, 'user', user);
   const userRes = await postUpdate(id, user);
   dispatch({
     type: UPDATE_SUCCESSFUL,

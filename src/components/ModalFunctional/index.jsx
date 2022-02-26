@@ -1,21 +1,21 @@
 /* eslint-disable react/prop-types */
 import { FaCheckCircle } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { hiddenModal } from '../../store/actions/userActions';
-// import { fetchRemoveCourse } from '../../store/actions/courseActions';
+import { fetchRemoveCourse } from '../../store/actions/courseActions';
 
-const ModalFunctional = ({ btn, cancel, /* idCourse, */ description }) => {
+const ModalFunctional = ({ btn, cancel, idCourse, description }) => {
   const dispatch = useDispatch();
-  console.log('working');
-  // const removeCourse = (id) => {
-  //   if (btn === 'delete') {
-  //     dispatch(fetchRemoveCourse(id));
-  //     dispatch(hiddenModal());
-  //     window.location.reload();
-  //   }
-  //   dispatch(hiddenModal());
-  // };
+
+  const removeCourse = (id) => {
+    if (btn === 'delete') {
+      dispatch(fetchRemoveCourse(id));
+      dispatch(hiddenModal());
+      window.location.reload();
+    }
+    dispatch(hiddenModal());
+  };
 
   return (
     <div
@@ -49,10 +49,9 @@ const ModalFunctional = ({ btn, cancel, /* idCourse, */ description }) => {
                text-sm shadow-sm font-medium tracking-wider
            text-white rounded-full hover:shadow-lg btn-modal-ok"
               data-cy="btn-modal-ok"
-              onClick={() => dispatch(hiddenModal())}
+              onClick={() => dispatch(removeCourse(idCourse))}
             >
-              {btn}
-              {/* {description === 'Successful Purchase'
+              {description === 'Successful Purchase'
                 ? (
                   <Link
                     to="/"
@@ -61,7 +60,7 @@ const ModalFunctional = ({ btn, cancel, /* idCourse, */ description }) => {
                     {btn}
                   </Link>
                 )
-                : btn} */}
+                : btn}
             </button>
           </div>
         </div>

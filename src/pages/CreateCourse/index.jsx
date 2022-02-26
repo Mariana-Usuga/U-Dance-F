@@ -12,7 +12,6 @@ const CreateCourse = () => {
   const dispatch = useDispatch();
   const modal = useSelector((state) => state.user.show_modal);
   const [formCourse, setFormCourse] = useState();
-  // const [image, setImage] = useState();
 
   const handleChange = (e) => {
     const { name } = e.target;
@@ -171,7 +170,7 @@ const CreateCourse = () => {
           </div>
         </div>
       </div>
-      {modal ? <Modal btn="OK" /> : null}
+      {modal ? <Modal btn="OK" description="Successfully saved your changes" /> : null}
     </>
   );
 };

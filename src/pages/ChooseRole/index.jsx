@@ -1,18 +1,23 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-// import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth0 } from '@auth0/auth0-react';
 import { fetchRole } from '../../store/actions/userActions';
 
 const ChooseRole = () => {
   const dispatch = useDispatch();
-  // const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect } = useAuth0();
 
+  const directorRole = () => {
+    dispatch(fetchRole('director'));
+    loginWithRedirect();
+  };
   const chooseRole = (e) => {
-    dispatch(fetchRole(e.target.value));
+    e.preventDefault();
+    dispatch(fetchRole('student'));
+    loginWithRedirect();
   };
 
   return (
@@ -31,14 +36,14 @@ const ChooseRole = () => {
             <div
               className="px-4 py-2 font-serif text-center
           bg-purple-400 hover:bg-purple-600 w-64 h-10 rounded-2xl"
-              onClick={chooseRole}
             >
               <button
                 type="button"
                 className="font-bold"
                 data-cy="student"
                 value="student"
-                // onClick={loginWithRedirect}
+                name="student"
+                onClick={chooseRole}
               >
                 STUDENT
               </button>
@@ -59,15 +64,17 @@ const ChooseRole = () => {
             <div
               className="px-4 py-2 mt-2mt-4 font-serif text-center
            bg-purple-400 hover:bg-purple-600 w-64 h-10 rounded-2xl"
-              onClick={chooseRole}
             >
               <button
                 type="button"
                 className="font-bold"
                 value="director"
+                name="director"
+                // onClick={chooseRole}
                 // onClick={loginWithRedirect}
               >
                 <Link
+                  onClick={directorRole}
                   to="/pages/director/profile"
                   style={{ textDecoration: 'none' }}
                   data-cy="director"

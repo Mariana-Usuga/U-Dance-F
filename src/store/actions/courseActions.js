@@ -12,6 +12,7 @@ export const fetchCourses = () => async (dispatch) => {
 };
 
 export const createCourse = (course) => async (dispatch) => {
+  console.log('entra en post cpurse');
   const courseRes = await postCourse(course);
   dispatch({
     type: CREATE_COURSE,

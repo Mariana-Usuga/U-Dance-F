@@ -14,6 +14,7 @@ const initialState = {
 };
 
 const userReducer = (state = initialState, action) => {
+  console.log('role in reducer', action.payload);
   switch (action.type) {
     case SIGN_UP_SUCCESSFUL:
       return { ...state, token: action.payload };
