@@ -13,11 +13,9 @@ import { fetchCourses } from '../../store/actions/courseActions';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import ChooseRole from '../ChooseRole';
-// import Profile from '../../components/Profile';
 import { fetchSignUp } from '../../store/actions/userActions';
 
 const LandingPage = () => {
-  // const navigate = useNavigate();
   const role = useSelector((state) => state.user.user?.role);
   const { user } = useAuth0();
   const dispatch = useDispatch();
@@ -91,9 +89,6 @@ const LandingPage = () => {
           </>
         ) : user && role === 'director' ? (
           null
-        //  <Profile />
-        //  <div onClick={navigate('/pages/director/profile')} />
-        //  navigate('/pages/director/profile')
         ) : <ChooseRole />}
     </>
   );

@@ -27,12 +27,9 @@ const { store } = configureStore();
 const Routing = () => (
   <BrowserRouter>
     <Routes>
-      {/* <Route path="/" element={<ChooseRole />} /> */}
       <Route path="/" element={<LandingPage />} />
-      {/* <Route path="/director/profile" element={<Profile />} /> */}
 
       <Route path="pages" element={<Layout />}>
-        {/* <Route path="/" element={<LandingPage />} /> */}
         <Route path="search/:rhythm" element={<Search />} />
         <Route path="teacherDetail/:id" element={<DetailTeacher />} />
         <Route path="pay" element={<Pay />} />
@@ -65,9 +62,7 @@ ReactDOM.render(
       redirectUri={window.location.origin}
     >
       <Provider store={store}>
-        {/* <PersistGate loading={null} persistor={persistor}> */}
         <Routing />
-        {/* </PersistGate> */}
       </Provider>
     </Auth0Provider>
   </React.StrictMode>,
