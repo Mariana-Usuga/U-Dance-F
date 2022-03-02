@@ -28,6 +28,4 @@ const configureStore = () => {
   return { store, persistor };
 };
 
-// const store = createStore(storeCombined, composeWithDevTools(applyMiddleware(thunk)));
-
 export default configureStore;
