@@ -6,7 +6,7 @@
 /* eslint-disable no-underscore-dangle */
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { Link /* useNavigate */ } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import CardCourse from '../../components/CardCourse';
 import { fetchCourses } from '../../store/actions/courseActions';
@@ -16,6 +16,7 @@ import ChooseRole from '../ChooseRole';
 import { fetchSignUp } from '../../store/actions/userActions';
 
 const LandingPage = () => {
+  const navigate = useNavigate();
   const role = useSelector((state) => state.user.user?.role);
   const { user } = useAuth0();
   const dispatch = useDispatch();
@@ -88,7 +89,7 @@ const LandingPage = () => {
             <Footer />
           </>
         ) : user && role === 'director' ? (
-          null
+          <div onClick={navigate('pages/director/profile')} />
         ) : <ChooseRole />}
     </>
   );

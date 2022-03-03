@@ -7,7 +7,7 @@ import Dropdown from '../Dropdown';
 
 const NavBar = () => {
   const role = useSelector((state) => state.user.user.role);
-  const { user, logoutContext } = useAuth0();
+  const { user, logout } = useAuth0();
 
   return (
     <nav>
@@ -24,7 +24,9 @@ const NavBar = () => {
         <li className="">
           {user && role === 'director' ? null : <Dropdown />}
         </li>
-        <li onClick={logoutContext} className="text-2xl mt-8 mr-8 text-white font-serif">Logout</li>
+        <li onClick={logout} className="text-2xl mt-8 mr-8 text-white font-serif">
+          Logout
+        </li>
       </ul>
     </nav>
   );

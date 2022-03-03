@@ -57,8 +57,8 @@ const Routing = () => (
 ReactDOM.render(
   <React.StrictMode>
     <Auth0Provider
-      domain="dev-e18227qz.us.auth0.com"
-      clientId="3m9OoYMQ85RsfjYLkkTQVpN9nLYQX6vZ"
+      domain="dev-aj9iwtvo.us.auth0.com"
+      clientId="seEglm3LgcJQTuKiolyjA574WeH8JHKE"
       redirectUri={window.location.origin}
     >
       <Provider store={store}>

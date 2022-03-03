@@ -11,6 +11,7 @@ const initialState = {
   token: JSON.parse(localStorage.getItem('token')) ?? '',
   show_modal: null,
   courses: [],
+  logout: false,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -24,7 +25,7 @@ const userReducer = (state = initialState, action) => {
       const nee = { ...state, user: action.payload };
       return nee;
     case LOGOUT:
-      return {};
+      return true;
     case SHOW_MODAL:
     case HIDDEN_MODAL:
       return { ...state, show_modal: action.payload };
