@@ -1,7 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 
-const URL_BASE = process.env.REACT_APP_API_URL_BASE;
+// const URL_BASE = process.env.REACT_APP_API_URL_BASE;
+const URL_BASE = 'https://u-dance.herokuapp.com';
+// console.log('url in course', URL_BASE);
 
 const token = JSON.parse(localStorage.getItem('token'));
 

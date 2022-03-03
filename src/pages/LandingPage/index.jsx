@@ -21,6 +21,7 @@ const LandingPage = () => {
   const { user } = useAuth0();
   const dispatch = useDispatch();
   const courses = useSelector((state) => state.course.courses);
+
   useEffect(() => {
     dispatch(fetchCourses());
   }, []);
